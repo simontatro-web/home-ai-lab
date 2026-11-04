@@ -1,0 +1,14 @@
+# Quickstart: a small model that trains in minutes on one GPU (about 30M parameters, 10.6M non-embedding).
+# Use it to check that the code runs end to end before a long run.
+run_name: tiny_quickstart
+model: {n_layer: 6, d_model: 384, n_heads: 6, ctx: 512}
+data_dir: data/clean
+lr: 6.0e-4
+schedule: cosine
+warmup_steps: 500
+grad_clip: 1.0
+max_steps: 8000
+batch_size: 64
+log_every: 20
+eval_every: 500
+out_dir: runs/tiny_quickstart

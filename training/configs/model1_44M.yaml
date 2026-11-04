@@ -1,0 +1,13 @@
+# M1: baseline. Constant learning rate, no warmup.
+run_name: model1_44M
+model: {n_layer: 6, d_model: 512, n_heads: 8, ctx: 512}
+data_dir: data/clean
+lr: 6.0e-4
+schedule: constant
+warmup_steps: 0
+grad_clip: 1.0
+max_steps: 13700        # ~0.9B tokens on 2 GPUs (2 x 64 x 512 tokens/step)
+batch_size: 64
+log_every: 50
+eval_every: 1000
+out_dir: runs/model1_44M

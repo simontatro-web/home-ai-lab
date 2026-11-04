@@ -1,0 +1,14 @@
+# M3. Changes from M2: 12 layers, width 768, lower learning rate (3e-4).
+# This is the cleaned-data model in the clean-vs-raw comparison (see model4_236M_raw.yaml).
+run_name: model3_123M
+model: {n_layer: 12, d_model: 768, n_heads: 12, ctx: 1024}
+data_dir: data/clean
+lr: 3.0e-4
+schedule: cosine
+warmup_steps: 2000
+grad_clip: 1.0
+max_steps: 38100       # ~2.5B tokens on 2 GPUs (2 x 32 x 1024 tokens/step)
+batch_size: 32
+log_every: 1000
+eval_every: 5000
+out_dir: runs/model3_123M

@@ -1,0 +1,13 @@
+# M2. Changes from M1: linear warmup + cosine decay, width 512 -> 640, context 512 -> 1024.
+run_name: model2_71M
+model: {n_layer: 8, d_model: 640, n_heads: 10, ctx: 1024}
+data_dir: data/clean
+lr: 6.0e-4
+schedule: cosine
+warmup_steps: 2000
+grad_clip: 1.0
+max_steps: 14200        # ~1.4B tokens on 2 GPUs (2 x 48 x 1024 tokens/step)
+batch_size: 48
+log_every: 200
+eval_every: 2000
+out_dir: runs/model2_71M

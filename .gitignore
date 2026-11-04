@@ -1,0 +1,19 @@
+# training outputs and checkpoints (only each run's log.csv is kept)
+runs/*
+!runs/*/
+runs/*/*
+!runs/*/log.csv
+*.pt
+
+# token files and raw text (too big for git)
+data/
+corpus/
+
+# trained tokenizer (regenerate with training/prepare_data.py --train-tokenizer)
+model/tokenizer.json
+
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+venv/
+.pytest_cache/

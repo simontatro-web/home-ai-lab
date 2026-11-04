@@ -1,0 +1,15 @@
+# Clean-vs-raw comparison: the M4 architecture trained on the raw (uncleaned,
+# un-deduplicated) corpus. Compare its val loss against model3_123M.yaml.
+# Build the data with: python training/prepare_data.py --src corpus/ --out data/raw --no-clean
+run_name: model4_236M_raw
+model: {n_layer: 16, d_model: 1024, n_heads: 16, n_kv_heads: 8, ctx: 2048}
+data_dir: data/raw
+lr: 3.0e-4
+schedule: cosine
+warmup_steps: 4000
+grad_clip: 1.0
+max_steps: 47800       # ~4.7B tokens on 2 GPUs (2 x 24 x 2048 tokens/step)
+batch_size: 24
+log_every: 1000
+eval_every: 5000
+out_dir: runs/model4_236M_raw

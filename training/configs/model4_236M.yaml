@@ -1,0 +1,14 @@
+# M4. Changes from M3: 16 layers, width 1024, grouped-query attention (8 KV heads
+# for 16 query heads, half the KV cache), context 2048, warmup 4000.
+run_name: model4_236M
+model: {n_layer: 16, d_model: 1024, n_heads: 16, n_kv_heads: 8, ctx: 2048}
+data_dir: data/clean
+lr: 3.0e-4
+schedule: cosine
+warmup_steps: 4000
+grad_clip: 1.0
+max_steps: 47800       # ~4.7B tokens on 2 GPUs (2 x 24 x 2048 tokens/step)
+batch_size: 24
+log_every: 1000
+eval_every: 5000
+out_dir: runs/model4_236M
